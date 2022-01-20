@@ -16,10 +16,10 @@ namespace checkgreenpass
         private DGC dgc; 
         public Core()
         {
-            dgc = new DGC();
+            dgc = new DGC("C:\\users\\elia\\tmp", true);
 
             USBCameraConnect usb = new USBCameraConnect();
-            usb.Connect();
+            usb.Connect(0);
 
             qrCodeDetector = new QRCodeDetector();
 
@@ -62,15 +62,6 @@ namespace checkgreenpass
                 Console.WriteLine("Codice QR Valido:\n" + results_info);
                 Console.Beep(440, 2000);
             }
-            //var res = await dgc.ParseDgc(tI.Image);
-            /*string results_info = "";
-            if (task.Result != null && task.Result.Status == DgcResultStatus.Valid)
-            {
-                results_info = task.Result.Dgc.Name.GivenName + " " + task.Result.Dgc.Name.FamilyName + "  " + task.Result.Dgc.DateOfBirth;
-                Console.WriteLine("Codice QR Valido:\n" + results_info);
-                Console.Beep(440, 2000);
-            }*/
-            // ----------------------------------------------------
 
             Cv2.ImShow("im", im2show);
             Cv2.WaitKey(33);

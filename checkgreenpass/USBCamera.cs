@@ -64,9 +64,9 @@ namespace checkgreenpass
             }
         }
 
-        public bool Connect()
+        public bool Connect(int camId)
         {
-            capture = new VideoCapture(1);
+            capture = new VideoCapture(camId);
             ImageAcquisitionThread = new Thread(new ThreadStart(ImageAcquisitionThreadProc));
             ImageAcquisitionThread.Start();
             connected = true;
